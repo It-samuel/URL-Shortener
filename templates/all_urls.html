@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}View all URLS{% endblock %}
+
+{% block content %}
+    <h1>All Shortened URLs</h1>
+    {% if vals %}
+        {% for url in vals %}
+            <p><strong>Short:</strong> <a href="/{{url.short}}">http://localhost:5000/{{url.short}}</a> <strong>Long:</strong> <a href="{{url.long}}">{{url.long}}</a></p>
+        {% endfor %}
+    {% else %}
+        <p>No URLs have been shortened yet.</p>
+    {% endif %}
+    <a href="/">BACK TO HOME</a>
+{% endblock %}
