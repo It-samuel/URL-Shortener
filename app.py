@@ -1,14 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 import random
 import string
 import os
 
+load_dotenv()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+# Context processor to inject endpoint in all templates
+@app.context_processor
+def inject_endpoint():
+    return dict(endpoint=os.getenv("API_BASE_URL", "http://localhost:5000"))
 
 # Create tables with Flask 2.x approach - using app context
 with app.app_context():
@@ -31,7 +38,6 @@ def shorten_url():
         short_url = Urls.query.filter_by(short=rand_letters).first()
         if not short_url:
             return rand_letters
-
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
