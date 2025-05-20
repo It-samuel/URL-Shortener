@@ -19,7 +19,7 @@ variable "web_app_name" {
   type        = string
 }
 
-variable "docker_image" {
+variable "docker_image_name" {
   description = "Docker image to deploy"
   type        = string
 }
