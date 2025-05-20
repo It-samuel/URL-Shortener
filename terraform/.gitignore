@@ -1,0 +1,7 @@
+# Ignore Terraform build artifacts
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+terraform.tfstate.d/
+.terraform.lock.hcl
