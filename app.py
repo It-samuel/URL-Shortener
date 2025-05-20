@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 # Context processor to inject endpoint in all templates
 @app.context_processor
 def inject_endpoint():
-    return dict(endpoint=os.getenv("API_BASE_URL", "http://localhost:5000"))
+    return dict(endpoint=os.getenv("API_BASE_URL", "http://localhost:8080"))
 
 # Create tables with Flask 2.x approach - using app context
 with app.app_context():
@@ -77,4 +77,4 @@ def display_all():
     return render_template('all_urls.html', vals=all_urls)
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=8080, debug=True)

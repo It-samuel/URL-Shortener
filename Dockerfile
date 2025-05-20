@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 5000
+EXPOSE 8080
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
@@ -22,8 +22,5 @@ ENV FLASK_APP=app.py
 # Set the environment variable for Flask to run in development mode
 ENV FLASK_ENV=development
 
-# Run the application
-CMD ["flask", "run", "--host=0.0.0.0"]
-
-
-
+# Run the application (FIXED THIS LINE)
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
